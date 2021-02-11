@@ -1,0 +1,5 @@
+print('โปรแกรมเปรียบเทียบค่า')
+print("-"*30)
+num1 = input('Enter your number :')
+num2 = input('Enter your number :')
+print(num1 == num2)
