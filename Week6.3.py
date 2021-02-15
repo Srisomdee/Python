@@ -13,8 +13,9 @@ def show():
     c = conn.cursor()
     c.execute('''SELECT * FROM profile''')
     result = c.fetchall()
+    print('{0:-<12}{1:-<15}{2:-<15}{3:-<27}{4:-<6}{5:<6}{6}'.format('ลำดับที่',' ชื่อ','สกุล','อีเมล','เพศ','อายุ','ชั้นปี'))
     for x in result :
-        print(x)
+        print('{0:<8}{1:<15}{2:<15}{3:<27}{4:<6}{5:<6}{6}'.format(x[0],x[1],x[2],x[3],x[4],x[5],x[6]))
     conn.commit()
     conn.close()
 
@@ -84,17 +85,19 @@ while True:
         delete()
     elif choice == 'x':
         yesno = input('ต้องการออกจากระบบหรือไม่ [y/n]:')
-        if yesno == 'Y' or yesno == 'y':
+        if yesno == 'y':
             print('ออกจากระบบเรียบร้อยแล้ว')
             break
-        elif yesno == 'N' or yesno == 'n':
+        elif yesno == 'n':
             print('ได้ทำการกลับสู่ระบบแล้ว')
             continue
-        else:
-            print('Fail!')
+
 
 #การเพิ่มข้อมูลลงตาราง
 """
+import sqlite3 #import sqlite3
+conn = sqlite3.connect("example.db")
+c = conn.cursor() #create a cursor object
 #c.execute('''INSERT INTO profile (id,fname,lName,email,Sex,Age,Gradelevel) VALUES (NULL,"maytee","Srisomdee","matee@kkumail.com","male","18","M.6")''')
 #c.execute('''INSERT INTO profile VALUES (NULL,"Cawadon","Banjong","cawadon@kkumail.com","male","18","M.6")''')
 #c.execute('''INSERT INTO profile VALUES (NULL,"Watcharachat","Asana","Watcharachat@kkumail.com","male","17","M.6")''')
@@ -109,10 +112,14 @@ while True:
 """import sqlite3 #import sqlite3
 conn = sqlite3.connect("example.db")
 c = conn.cursor() #create a cursor object 
-c.execute ('''CREATE TABLE users(id integer PRIMARY KEY AUTOINCREMENT,
+c.execute ('''CREATE TABLE profile(id integer PRIMARY KEY AUTOINCREMENT,
     fname varchar(30) NOT NULL,
     lName varchar(30) NOT NULL,
-    email varchar(100) NOT NULL)''')
+    email varchar(100) NOT NULL,
+    Sex varchar(20 NOT NULL,
+    Age varchar(10) NOT NULL,
+    Gradelevel varchar(10) NOT NULL,)''')
+
 conn.commit()
 conn.close()"""
 
