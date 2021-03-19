@@ -24,7 +24,7 @@ def add(fname,lName,email,Sex,Age,Gradelevel):
     try :
         conn = sqlite3.connect(r"D:\python_matee\example.db")
         c = conn.cursor()
-        sql = '''INSERT INTO profile (fname,lName,email,sex,age,Gradelevel) VALUES (?,?,?,?,?,?)'''
+        sql = '''INSERT INTO profile (fname,lName,email,sex,age,Gradelevel,0,0,0,0,0,0) VALUES (?,?,?,?,?,?)'''
         data = (fname,lName,email,Sex,Age,Gradelevel)
         c.execute(sql,data)
         conn.commit()
